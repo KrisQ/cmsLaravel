@@ -15,24 +15,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', function(){
-  return "Hi I am about page";
-});
+//Route::resource('posts', 'PostsController');
+//Route::get('contact', 'PostsController@contact');
 
-Route::get ('/contact', function(){
-  return "Contact page";
-});
+Route::get('post/{id}', 'PostsController@show_post');
 
-Route::get('/post/{id}/{name}', function($id, $name){
-  return "this is post #".$id." and name is ".$name;
-});
+// Route::get('/post/{id}', 'PostsController@index');
 
-Route::get('/admin/posts', array('as' => 'admin.home',  function(){
-  $url = route('admin.home');
-  return "This is url is ".$url;
-}));
-
-//Route group
-Route::group(['middleware'=>['web']], function(){
-
-});
+// Route::get('/about', function(){
+//   return '<a href="'.route('admin.home').'">Yooo</a>';
+// });
+//
+Route::get('/contact', 'PostsController@contact');
+//
+// Route::get('/post/{id}/{name}', function($id, $name){
+//   return "<h1>Post #$id</h1> $name";
+// });
+//
+// Route::get('admin/posts/example', array(
+//   'as'=>'admin.home' ,
+//    function(){
+//      $url = route('admin.home');
+//      return "this url is $url";
+// }));
