@@ -68,12 +68,12 @@ use App\Post;
 //   $post->save();
 // });
 
-// Route::get('/create', function(){
-//   Post::create([
-//     'title'=>'php array',
-//     'content'=>'I am learning a lot'
-//   ]);
-// });
+Route::get('/create', function(){
+  Post::create([
+    'title'=>'php array',
+    'content'=>'I am learning a lot'
+  ]);
+});
 
 // Route::get('/update', function(){
 //   Post::where('id', 2)->where('is_admin', 0)->update([
@@ -86,9 +86,22 @@ use App\Post;
 //   $post = Post::find(1)->delete();
 // });
 
-Route::get('/delete', function(){
-  $post = Post::destroy(2);
+// Route::get('/delete', function(){
+//   // $post = Post::destroy(2);
+//   $post = Post::find(5)->delete();
+// });
+
+// Route::get('soft', function(){
+//   // $post = Post::withTrashed()->where('id', 5)->get();
+//   // return $post;
+//   post::withTrashed()->where('is_admin', 0)->restore();
+// });
+
+Route::get('/force', function(){
+  Post::withTrashed()->where('is_admin', 0)->forceDelete();
 });
+
+
 
 /*
 |--------------------------------------------------------------------------
